@@ -36,7 +36,7 @@ pipeline {
       steps {
         //sh 'docker context create myecscontext --from-env'
         //sh 'docker context use myecscontext'
-        sh 'docker compose up'
+        sh 'docker compose -d up'
         sh 'docker compose ps --format json'
       }
     }
