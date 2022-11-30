@@ -30,7 +30,7 @@ pipeline {
     stage('Docker Container Artifactory'){
       steps{
         sh 'docker context use default'
-        sh 'docker compose push vishnevskiyav/java-maven-app:$BUILD_NUMBER'
+        sh 'docker push vishnevskiyav/java-maven-app:$BUILD_NUMBER'
       } 
     }
     stage('Deploy') {
