@@ -29,14 +29,13 @@ pipeline {
     }
     stage('Docker Container Artifactory'){
       steps{
-        sh 'docker context use default'
         sh 'docker push vishnevskiyav/java-maven-app:$BUILD_NUMBER'
       } 
     }
     stage('Deploy') {
       steps {
-        sh 'docker context create myecscontext --from-env'
-        sh 'docker context use myecscontext'
+        //sh 'docker context create myecscontext --from-env'
+        //sh 'docker context use myecscontext'
         sh 'docker compose up'
         sh 'docker compose ps --format json'
       }
@@ -44,7 +43,7 @@ pipeline {
   }
   post {
     always {
-      sh 'docker context use default'
+      //sh 'docker context use default'
       sh 'docker logout'
     }
   }
