@@ -1,0 +1,9 @@
+services:
+  web:
+    environment:
+      - AWS_REGION=eu-central-1
+    image: vishnevskiyav/java-maven-app:latest
+    build:
+      context: .
+    ports:
+      - "8080:8080"
