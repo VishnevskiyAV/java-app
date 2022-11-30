@@ -19,7 +19,7 @@ pipeline {
     stage('Build Docker Image'){
       steps{
         sh 'docker context use default'
-        sh 'docker compose build -t vishnevskiyav/java-maven-app:$BUILD_NUMBER .'   
+        sh 'docker build -t vishnevskiyav/java-maven-app:$BUILD_NUMBER .'   
       }
     }
     stage('Login to Docker Hub') {      	
