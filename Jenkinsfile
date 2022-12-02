@@ -57,11 +57,11 @@ pipeline {
           }
         }
       }
+    }
   }
   post {
     always {
         echo 'Completed'
      }
     }
-  }
 }
