@@ -61,15 +61,9 @@ pipeline {
   }
   post {
     always {
-      withCredentials([string(credentialsId: 'AWS_REPOSITORY_URL_SECRET', variable: 'AWS_ECR_URL')]) {
-          junit allowEmptyResults: true, testResults: 'target/surfire-reports/*.xml'
-          publishHTML([allowMissing: true, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/site/jacoco-ut/', reportFiles: 'index.html', reportName: 'Unit Testing Coverage', reportTitles: 'Unit Testing Coverage'])
-          jacoco(execPattern: 'target/jacoco-ut.exec')
-          deleteDir()
-          sh "docker rmi ${AWS_ECR_URL}:${POM_VERSION}"
-        }
+        sh "docker rmi ${AWS_ECR_URL}:${BUILD_NUMBER}"
       }
-    }
+  }
 }
 
 // Doesn't work without Pipeline Utility Steps
