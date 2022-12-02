@@ -15,6 +15,6 @@ public class DemoApplication {
 
 	@RequestMapping("/")
   public String home() {
-    return "Hello World! ver.2";
+    return "Hello World! ver.5";
   }
 }
