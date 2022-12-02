@@ -57,13 +57,11 @@ pipeline {
           }
         }
       }
-
   }
   post {
     always {
-      //sh 'docker context use default'
-      sh 'docker logout'
+        echo 'Completed'
+     }
     }
   }
-}
 }
