@@ -10,7 +10,7 @@ pipeline {
     AWS_ECS_COMPATIBILITY = 'EC2'
     AWS_ECS_CPU = '256'
     AWS_ECS_MEMORY = '512'
-    AWS_ECS_CLUSTER = 'Jenkins-ECS-cluster'
+    AWS_ECS_CLUSTER = 'Jenkins-ECS-Cluster'
     AWS_ECS_TASK_DEFINITION_PATH = './ecs/container-definition-update-image.json'
     }
 
