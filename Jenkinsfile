@@ -27,6 +27,7 @@ pipeline {
     stage('Build Docker Image') {
         steps {
             withCredentials([string(credentialsId: 'AWS_REPOSITORY_URL_SECRET', variable: 'AWS_ECR_URL')]) {
+              sh 'echo $AWS_REPOSITORY_URL_SECRET'
                 script {
                     docker.build("${AWS_ECR_URL}:${BUILD_NUMBER} .")
                 }
