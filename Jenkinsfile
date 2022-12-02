@@ -4,6 +4,8 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '2'))
   }
   environment {
+    POM_VERSION = getVersion()
+    JAR_NAME = getJarName()
     AWS_ECR_REGION = 'eu-central-1'
     AWS_ECS_SERVICE = 'staging'
     AWS_ECS_TASK_DEFINITION = 'staging'
@@ -27,9 +29,8 @@ pipeline {
     stage('Build Docker Image') {
         steps {
             withCredentials([string(credentialsId: 'AWS_REPOSITORY_URL_SECRET', variable: 'AWS_ECR_URL')]) {
-              echo "My secret text is '${AWS_ECR_URL}'"
                 script {
-                    docker.build("${AWS_ECR_URL}:${BUILD_NUMBER} .")
+                    docker.build("${AWS_ECR_URL}:${POM_VERSION}", "--build-arg JAR_FILE=${JAR_NAME} .")
                 }
             }
         }
