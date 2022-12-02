@@ -1,1 +1,1 @@
-# java-web-app for deploying with Jenkins in ecs with docker-compose
+# java-web-app to deploy with Jenkins in AWS ECS
