@@ -13,7 +13,7 @@ pipeline {
     AWS_ECS_CLUSTER = 'Jenkins-ECS-cluster'
     AWS_ECS_TASK_DEFINITION_PATH = './ecs/container-definition-update-image.json'
     }
-  }
+
   stages {
     stage('Tooling versions') {
       steps {
@@ -65,4 +65,5 @@ pipeline {
       sh 'docker logout'
     }
   }
+}
 }
