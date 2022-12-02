@@ -61,9 +61,10 @@ pipeline {
   }
   post {
     always {
-        withCredentials([string(credentialsId: 'AWS_REPOSITORY_URL_SECRET', variable: 'AWS_ECR_URL')]) {
-            sh "docker rmi ${AWS_ECR_URL}:${BUILD_NUMBER}"
+      withCredentials([string(credentialsId: 'AWS_REPOSITORY_URL_SECRET', variable: 'AWS_ECR_URL')]) {
+        sh "docker rmi ${AWS_ECR_URL}:${BUILD_NUMBER}"
       }
+    }
   }
 }
 
