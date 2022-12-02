@@ -12,8 +12,6 @@ pipeline {
     AWS_ECS_MEMORY = '512'
     AWS_ECS_CLUSTER = 'Jenkins-ECS-cluster'
     AWS_ECS_TASK_DEFINITION_PATH = './ecs/container-definition-update-image.json'
-    AWS_REPOSITORY_URL_SECRET = credentials('aws-repo-url')
-    AWS_ECS_EXECUTION_ROL 
     }
   }
   stages {
