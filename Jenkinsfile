@@ -28,7 +28,7 @@ pipeline {
         steps {
             withCredentials([string(credentialsId: 'AWS_REPOSITORY_URL_SECRET', variable: 'AWS_ECR_URL')]) {
                 script {
-                    docker.build("${AWS_ECR_URL}:$BUILD_NUMBER .")
+                    docker.build("${AWS_ECR_URL}:${BUILD_NUMBER} .")
                 }
             }
         }
@@ -40,7 +40,7 @@ pipeline {
                     script {
                         def login = ecrLogin()
                         sh('#!/bin/sh -e\n' + "${login}") // hide logging
-                        docker.image("${AWS_ECR_URL}:$BUILD_NUMBER").push()
+                        docker.image("${AWS_ECR_URL}:${BUILD_NUMBER}").push()
                     }
                 }
             }
